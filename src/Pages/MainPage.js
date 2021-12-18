@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLinkTo } from '@react-navigation/native';
 import { Text, TextInput, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/stylesMainPage';
@@ -6,11 +7,18 @@ import styles from '../styles/stylesMainPage';
 const filterText = "What do you want to watch?"
 
 export default function MainPage() {
+  const linkTo = useLinkTo();
   return (
     <View style={ styles.mainPageContainer }>
       <View style={ styles.upBar }>
-        <Icon name="arrow-left" size={25} style={ styles.backArrow } color="#fff"/>
-        <Text style={ styles.upBarText }> Strazh Cinema</Text>
+        <Icon
+          name="arrow-left"
+          size={25}
+          style={ styles.backArrow }
+          color="#fff"
+          onPress={ () => linkTo('/Login') }
+        />
+        <Text style={ styles.upBarText }>Strazh Cinema</Text>
       </View>
 
       <View style={ styles.filterContainer } >
