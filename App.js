@@ -10,11 +10,11 @@ export default function App() {
     setEmail
   }
   return (
-    <NavigationContainer>
-      <MyContext.Provider value={ contextValues }>
-        <Navigation />
-      </MyContext.Provider>
-    </NavigationContainer>
+      <NavigationContainer>
+        <MyContext.Provider value={ contextValues }>
+          <Navigation />
+        </MyContext.Provider>
+      </NavigationContainer>
   );
 }
 
