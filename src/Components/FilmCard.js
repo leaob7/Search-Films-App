@@ -5,8 +5,8 @@ import { styles } from '../styles/styleFilmCards';
 export default function FilmCard({ movies }) {
   return (
     <View style={ styles.cardContainer }>
-      {movies.map((film) => (
-        <View style={ styles.filmCard }>
+      {movies.map((film, index) => (
+        <View style={ styles.filmCard } key={ index }>
           <Image 
             source={{uri: `https://image.tmdb.org/t/p/original/${film.poster_path}`}}
             style={ styles.poster }

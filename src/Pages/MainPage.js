@@ -5,6 +5,7 @@ import { requestRecentFilms, requestFilmImage, requestFrequentFilms, requestSoon
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
+import Loading from '../Components/Loading';
 
 const filterText = "What do you want to watch?"
 
@@ -15,10 +16,8 @@ export default function MainPage() {
 
   const linkTo = useLinkTo();
   useEffect(() => {
-    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
-
-    // requestRecentFilms().then((movies) => setRecentMovies(movies.results));
-
+    // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
+    // requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
 
     // requestFrequentFilms().then((movies) => console.log(movies.results));
 
@@ -50,14 +49,11 @@ export default function MainPage() {
         <Text style={ styles.linkTexts }>All</Text>
       </View>
       <ScrollView horizontal={ true }>
+      
         {recentMovies.length != 0 ? <FilmCard movies={ recentMovies }/>
-        : <Text>Loading...</Text>}
+        : <Loading />}
 
       </ScrollView>
-
-
-      {/* <Image source={ {uri: "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg"}} style={{width: 40, height: 40}}/> */}
-
 
       <View style={ styles.frequentFilms }>
         <Text style={ styles.linkTexts }>Frequent requests</Text>

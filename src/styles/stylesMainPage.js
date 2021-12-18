@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     mainPageContainer: {
       backgroundColor: "#331177",
-      height: "100%"
+      height: "100%",
     },
     upBar: {
       flexDirection: "row",
