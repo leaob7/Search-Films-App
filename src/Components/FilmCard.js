@@ -6,13 +6,13 @@ export default function FilmCard({ movies }) {
   return (
     <View style={ styles.cardContainer }>
       {movies.map((film) => (
-        <View>
+        <View style={ styles.filmCard }>
           <Image 
             source={{uri: `https://image.tmdb.org/t/p/original/${film.poster_path}`}}
             style={ styles.poster }
           />
-          <Text>{film.title}</Text>
-          <Text>{film.vote_average}</Text>
+          <Text style={ styles.filmCardText }>{film.title}</Text>
+          <Text style={ styles.filmCardText }>{film.vote_average}</Text>
         </View>
       ))}
     </View>

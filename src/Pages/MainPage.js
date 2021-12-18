@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLinkTo } from '@react-navigation/native';
-import { Text, TextInput, View, Image } from 'react-native';
+import { Text, TextInput, View, ScrollView } from 'react-native';
 import { requestRecentFilms, requestFilmImage, requestFrequentFilms, requestSoonFilms, requestConfigFilms } from '../utils/requests';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FilmCard from '../Components/FilmCard';
@@ -15,10 +15,10 @@ export default function MainPage() {
 
   const linkTo = useLinkTo();
   useEffect(() => {
-    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 3)));
+    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
 
-    // requestRecentFilms().then((movies) =>
-    // console.log(movies.results.splice(0,3)));
+    // requestRecentFilms().then((movies) => setRecentMovies(movies.results));
+
 
     // requestFrequentFilms().then((movies) => console.log(movies.results));
 
@@ -29,7 +29,7 @@ export default function MainPage() {
   })
 
   return (
-    <View style={ styles.mainPageContainer }>
+    <ScrollView style={ styles.mainPageContainer }>
       <View style={ styles.upBar }>
         <Icon
           name="arrow-left"
@@ -49,9 +49,12 @@ export default function MainPage() {
         <Text style={ styles.linkTexts }>Recent requests</Text>
         <Text style={ styles.linkTexts }>All</Text>
       </View>
+      <ScrollView horizontal={ true }>
+        {recentMovies.length != 0 ? <FilmCard movies={ recentMovies }/>
+        : <Text>Loading...</Text>}
 
-      {recentMovies.length != 0 ? <FilmCard movies={ recentMovies }/>
-      : <Text>Loading...</Text>}
+      </ScrollView>
+
 
       {/* <Image source={ {uri: "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg"}} style={{width: 40, height: 40}}/> */}
 
@@ -68,6 +71,6 @@ export default function MainPage() {
 
 
 
-    </View>
+    </ScrollView>
   )
 }
