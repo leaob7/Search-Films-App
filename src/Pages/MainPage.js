@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLinkTo } from '@react-navigation/native';
 import { Text, TextInput, View, ScrollView } from 'react-native';
-import { requestRecentFilms, requestFilmImage, requestFrequentFilms, requestSoonFilms, requestConfigFilms } from '../utils/requests';
+import { requestRecentFilms, requestFrequentFilms, requestSoonFilms, requestConfigFilms } from '../utils/requests';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
@@ -17,13 +17,12 @@ export default function MainPage() {
   const linkTo = useLinkTo();
   useEffect(() => {
     // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
-    // requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
+    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
 
-    // requestFrequentFilms().then((movies) => console.log(movies.results));
+    requestFrequentFilms().then((movies) => setFrequentMovies(movies.results.splice(0, 10)));
 
-    // requestSoonFilms().then((movies) => console.log(movies.results));
+    requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
 
-    // requestFilmImage(634649).then((movies) => console.log(movies));
 
   })
 
@@ -60,10 +59,24 @@ export default function MainPage() {
         <Text style={ styles.linkTexts }>All</Text>
       </View>
 
+      <ScrollView horizontal={ true }>
+      
+        {frequentMovies.length != 0 ? <FilmCard movies={ frequentMovies }/>
+        : <Loading />}
+
+      </ScrollView>
+
       <View style={ styles.soonFilms }>
         <Text style={ styles.linkTexts }>Coming soon</Text>
         <Text style={ styles.linkTexts }>All</Text>
       </View>
+
+      <ScrollView horizontal={ true }>
+      
+        {soonMovies.length != 0 ? <FilmCard movies={ soonMovies }/>
+        : <Loading />}
+
+      </ScrollView>
 
 
 
