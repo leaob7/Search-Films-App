@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLinkTo } from '@react-navigation/native';
-import { Text, TextInput, View } from 'react-native';
-import { requestRecentFilms } from '../utils/requests';
+import { Text, TextInput, View, Image } from 'react-native';
+import { requestRecentFilms, requestFilmImage, requestFrequentFilms, requestSoonFilms, requestConfigFilms } from '../utils/requests';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
 
 const filterText = "What do you want to watch?"
@@ -14,7 +15,17 @@ export default function MainPage() {
 
   const linkTo = useLinkTo();
   useEffect(() => {
-    requestRecentFilms().then((r) => console.log(r));
+    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 3)));
+
+    // requestRecentFilms().then((movies) =>
+    // console.log(movies.results.splice(0,3)));
+
+    // requestFrequentFilms().then((movies) => console.log(movies.results));
+
+    // requestSoonFilms().then((movies) => console.log(movies.results));
+
+    // requestFilmImage(634649).then((movies) => console.log(movies));
+
   })
 
   return (
@@ -38,6 +49,12 @@ export default function MainPage() {
         <Text style={ styles.linkTexts }>Recent requests</Text>
         <Text style={ styles.linkTexts }>All</Text>
       </View>
+
+      {recentMovies.length != 0 ? <FilmCard movies={ recentMovies }/>
+      : <Text>Loading...</Text>}
+
+      {/* <Image source={ {uri: "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg"}} style={{width: 40, height: 40}}/> */}
+
 
       <View style={ styles.frequentFilms }>
         <Text style={ styles.linkTexts }>Frequent requests</Text>
