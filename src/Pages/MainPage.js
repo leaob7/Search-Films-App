@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLinkTo } from '@react-navigation/native';
 import { Text, TextInput, View } from 'react-native';
+import { requestRecentFilms } from '../utils/requests';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/stylesMainPage';
 
 const filterText = "What do you want to watch?"
 
 export default function MainPage() {
+  const [recentMovies, setRecentMovies ] = useState([]);
+  const [frequentMovies, setFrequentMovies ] = useState([]);
+  const [soonMovies, setSoonMovies ] = useState([]);
+
   const linkTo = useLinkTo();
+  useEffect(() => {
+    requestRecentFilms().then((r) => console.log(r));
+  })
+
   return (
     <View style={ styles.mainPageContainer }>
       <View style={ styles.upBar }>
