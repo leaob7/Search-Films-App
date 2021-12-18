@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLinkTo } from '@react-navigation/native';
 import { Text, TextInput, View, ScrollView } from 'react-native';
-import { requestRecentFilms, requestFrequentFilms, requestSoonFilms, requestConfigFilms } from '../utils/requests';
+import { requestRecentFilms, requestFrequentFilms, requestSoonFilms } from '../utils/requests';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
 import Loading from '../Components/Loading';
+import MainPageFooter from '../Components/MainPageFooter';
 
 const filterText = "What do you want to watch?"
 
@@ -17,16 +18,17 @@ export default function MainPage() {
   const linkTo = useLinkTo();
   useEffect(() => {
     // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
-    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
+    // requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
 
-    requestFrequentFilms().then((movies) => setFrequentMovies(movies.results.splice(0, 10)));
+    // requestFrequentFilms().then((movies) => setFrequentMovies(movies.results.splice(0, 10)));
 
-    requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
+    // requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
 
 
   })
 
   return (
+    <>
     <ScrollView style={ styles.mainPageContainer }>
       <View style={ styles.upBar }>
         <Icon
@@ -78,8 +80,9 @@ export default function MainPage() {
 
       </ScrollView>
 
-
-
     </ScrollView>
+
+      <MainPageFooter />
+      </>
   )
 }
