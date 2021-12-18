@@ -11,7 +11,8 @@ export default function Login() {
 
   function validateLogin() {
     // validação extremamente simples apenas para o comportamento do app
-    email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
+    // email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
+    linkTo('/MainPage')
   }
   return (
     <View style={ styles.loginContainer }>
