@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
       borderColor: "#fff",
       borderWidth: 1,
       borderRadius: 25,
+      fontSize: 20,
       color: "#fff",
       width: "90%",
-      height: 30,
-      padding: 35,
+      height: 70,
+      padding: 10,
     },
     recentFilms: {
       flexDirection: "row",

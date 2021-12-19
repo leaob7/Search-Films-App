@@ -14,6 +14,7 @@ export default function MainPage({ navigation }) {
   const [recentMovies, setRecentMovies ] = useState([]);
   const [frequentMovies, setFrequentMovies ] = useState([]);
   const [soonMovies, setSoonMovies ] = useState([]);
+  const [textFilter, setTextFilter] = useState('');
 
   // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
   const recentMoviesAPI = () => {

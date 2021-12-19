@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     height: 400,
     width: "100%",
-    marginBottom: 30,
+    // marginBottom: 30,
   },
   ratingView: {
     flexDirection: 'row',
@@ -75,5 +75,9 @@ export const styles = StyleSheet.create({
   posterIcon: {
     flexDirection: "row",
     marginTop: 30,
-  }
+  },
+  movieInfo: {
+    justifyContent: "center",
+    margin: 20,
+  },
 })
