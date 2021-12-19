@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { View, Text, ScrollView } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Link } from '@react-navigation/native';
 import styles from '../styles/stylesMainPage';
 import { stylesFav } from '../styles/styleFavoriteMovies';
 import MainPageFooter from '../Components/MainPageFooter';

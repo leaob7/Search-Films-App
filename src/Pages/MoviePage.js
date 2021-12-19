@@ -12,7 +12,7 @@ export default function MoviePage({ route }) {
   const [movieDetails, setMovieDetails] = useState();
   const [checked, setChecked] = useState(false);
   const { setFavorites } = useContext(MyContext);
-
+  // utilizando contexto para salvar filmes favoritos
   useEffect(() => {
     requestFilmDetails(id).then((details) => setMovieDetails(details));
   }, [])

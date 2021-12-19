@@ -6,6 +6,7 @@ import { styles } from '../styles/styleFilmCards';
 export default function FilmCard({ movies }) {
   return (
     <View style={ styles.cardContainer }>
+    {/* Optei por utilizar HOFs apenas por questão de preferência */}
       {movies.map((film, index) => (
         <Link to={{ screen: 'MovieDetails', params: { id: film.id } }}>
           <View style={ styles.filmCard } key={ index }>

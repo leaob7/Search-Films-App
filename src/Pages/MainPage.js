@@ -15,12 +15,12 @@ export default function MainPage({ navigation }) {
   const [frequentMovies, setFrequentMovies ] = useState([]);
   const [soonMovies, setSoonMovies ] = useState([]);
   const [textFilter, setTextFilter] = useState('');
-  console.log(recentMovies);
 
   // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
+
   const recentMoviesAPI = () => {
     requestRecentFilms().then((movies) => {
-      setRecentMovies(movies.results);
+      setRecentMovies(movies.results.splice(0, 10));
     });
   }
 
@@ -38,11 +38,14 @@ export default function MainPage({ navigation }) {
   }
 
   const filteredMovies = (movies) => {
+    // filtrando e utilizando toLowerCase para case sensitive
     const filter = movies.filter((m) => m.title.toLowerCase().includes(textFilter.toLowerCase()));
     return <FilmCard movies={ filter } />;
   }
 
+
   useEffect(() => {
+    // utilizando funções para salvar os dados da api no estado
     recentMoviesAPI();
     frequentMoviesAPI();
     soonMoviesAPI();
@@ -72,6 +75,7 @@ export default function MainPage({ navigation }) {
       </View>
 
       { textFilter === '' ?
+      // listagem de filmes
       <>
         <View style={ styles.recentFilms }>
           <Text style={ styles.linkTexts }>Recent requests</Text>
