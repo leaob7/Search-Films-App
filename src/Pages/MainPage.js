@@ -15,6 +15,7 @@ export default function MainPage({ navigation }) {
   const [frequentMovies, setFrequentMovies ] = useState([]);
   const [soonMovies, setSoonMovies ] = useState([]);
 
+  // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
   const recentMoviesAPI = () => {
     requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
   }
@@ -26,21 +27,11 @@ export default function MainPage({ navigation }) {
   const soonMoviesAPI = () => {
     requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
   }
-
-  // const linkTo = useLinkTo();
   useEffect(() => {
-    // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
-    // requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
     recentMoviesAPI();
-
-    // requestFrequentFilms().then((movies) => setFrequentMovies(movies.results.splice(0, 10)));
     frequentMoviesAPI();
-
-    // requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
     soonMoviesAPI();
-
-
-  })
+  }, [])
 
   return (
     <>

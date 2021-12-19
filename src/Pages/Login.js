@@ -3,6 +3,7 @@ import { useLinkTo } from '@react-navigation/native';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/styleLogin';
+import { Link } from '@react-navigation/native';
 
 export default function Login({ navigation }) { 
   const linkTo = useLinkTo();
@@ -12,7 +13,7 @@ export default function Login({ navigation }) {
   function validateLogin() {
     // validação extremamente simples apenas para o comportamento do app
     // email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
-    navigation.push('/MainPage');
+    linkTo('/MainPage');
   }
   return (
     <View style={ styles.loginContainer }>

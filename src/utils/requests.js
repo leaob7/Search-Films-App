@@ -29,3 +29,9 @@ export const requestConfigFilms = async () => {
   const response = (await request).json();
   return response;
 }
+
+export const requestFilmDetails = async (movie_id) => {
+  const request = fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=e2a11eee9d189804182d267a87a4bea2`);
+  const response = (await request).json();
+  return response;
+}
