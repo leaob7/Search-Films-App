@@ -13,7 +13,9 @@ export default function MainPageFooter() {
         <Icon name="home" size={25} color="#d1b100" />
       </Link>
       <Icon name="film" size={25} color="#d1b100" />
-      <Icon name="star" size={25} color="#d1b100" />
+      <Link to={{ screen: 'FavoriteMovies' }}>
+        <Icon name="star" size={25} color="#d1b100" />
+      </Link>
       <Icon name="user" size={25} color="#d1b100" />
     </View>
   );

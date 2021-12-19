@@ -3,7 +3,6 @@ import { useLinkTo } from '@react-navigation/native';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/styleLogin';
-import { Link } from '@react-navigation/native';
 
 export default function Login({ navigation }) { 
   const linkTo = useLinkTo();

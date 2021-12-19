@@ -10,12 +10,17 @@ import MyContext from '../Context/Provider';
 export default function MoviePage({ route }) {
   const { id } = route.params;
   const [movieDetails, setMovieDetails] = useState();
-  const { favorites, setFavorites } = useContext(MyContext);
-  console.log(favorites);
+  const [checked, setChecked] = useState(false);
+  const { setFavorites } = useContext(MyContext);
 
   useEffect(() => {
     requestFilmDetails(id).then((details) => setMovieDetails(details));
   }, [])
+
+  const check = () => {
+    setChecked(true);
+    setFavorites((prevState) => [...prevState, movieDetails]);
+  }
 
   return (
     <>
@@ -81,11 +86,11 @@ export default function MoviePage({ route }) {
 
                 <View style={ styles.posterIcon }>
                   <Icon
-                    name="staro"
+                    name={ checked ? "star" : 'staro' }
                     color="#fff"
                     size={20}
                     style={{ marginRight: 10 }}
-                    onPress={() => setFavorites((prevState) => [...prevState, movieDetails])}
+                    onPress={check}
                   />
                   <Icon name="sharealt" color="#fff" size={20} />
                 </View>
