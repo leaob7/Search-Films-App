@@ -14,7 +14,14 @@ export default function FilmCard({ movies }) {
               style={ styles.poster }
             />
             <Text style={ styles.filmCardText }>{film.title}</Text>
-            <Text style={ styles.filmCardText }>{film.vote_average}</Text>
+
+            <View style={ { flexDirection: "row", justifyContent: "flex-start" } }>
+              <Text style={ styles.filmCardText, { color: "#d1b100" } }>IMDB</Text>
+              <Text style={ { marginLeft: 10, color: "#fff" } }>
+                {film.vote_average}
+              </Text>
+            </View>
+
           </View>
         </Link>
       ))}
