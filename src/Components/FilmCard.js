@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Image, View, Text } from 'react-native';
 import { Link } from '@react-navigation/native';
 import { styles } from '../styles/styleFilmCards';

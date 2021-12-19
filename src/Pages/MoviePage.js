@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/styleMoviePage';
 import { requestFilmDetails } from '../utils/requests';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Link } from '@react-navigation/native';
 import MainPageFooter from '../Components/MainPageFooter';
+import MyContext from '../Context/Provider';
 
 export default function MoviePage({ route }) {
   const { id } = route.params;
   const [movieDetails, setMovieDetails] = useState();
+  const { favorites, setFavorites } = useContext(MyContext);
+  console.log(favorites);
 
   useEffect(() => {
     requestFilmDetails(id).then((details) => setMovieDetails(details));
@@ -77,7 +80,13 @@ export default function MoviePage({ route }) {
                 </TouchableOpacity>
 
                 <View style={ styles.posterIcon }>
-                  <Icon name="staro" color="#fff" size={20} style={{ marginRight: 10 }} />
+                  <Icon
+                    name="staro"
+                    color="#fff"
+                    size={20}
+                    style={{ marginRight: 10 }}
+                    onPress={() => setFavorites((prevState) => [...prevState, movieDetails])}
+                  />
                   <Icon name="sharealt" color="#fff" size={20} />
                 </View>
 
