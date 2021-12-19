@@ -10,19 +10,34 @@ import MainPageFooter from '../Components/MainPageFooter';
 
 const filterText = "What do you want to watch?"
 
-export default function MainPage() {
+export default function MainPage({ navigation }) {
   const [recentMovies, setRecentMovies ] = useState([]);
   const [frequentMovies, setFrequentMovies ] = useState([]);
   const [soonMovies, setSoonMovies ] = useState([]);
 
-  const linkTo = useLinkTo();
+  const recentMoviesAPI = () => {
+    requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
+  }
+
+  const frequentMoviesAPI = () => {
+    requestFrequentFilms().then((movies) => setFrequentMovies(movies.results.splice(0, 10)));
+  }
+
+  const soonMoviesAPI = () => {
+    requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
+  }
+
+  // const linkTo = useLinkTo();
   useEffect(() => {
     // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
     // requestRecentFilms().then((movies) => setRecentMovies(movies.results.splice(0, 10)));
+    recentMoviesAPI();
 
     // requestFrequentFilms().then((movies) => setFrequentMovies(movies.results.splice(0, 10)));
+    frequentMoviesAPI();
 
     // requestSoonFilms().then((movies) => setSoonMovies(movies.results.splice(0, 10)));
+    soonMoviesAPI();
 
 
   })
@@ -36,7 +51,7 @@ export default function MainPage() {
           size={25}
           style={ styles.backArrow }
           color="#fff"
-          onPress={ () => linkTo('/Login') }
+          onPress={ () => navigation.navigate('Login') }
         />
         <Text style={ styles.upBarText }>Strazh Cinema</Text>
       </View>

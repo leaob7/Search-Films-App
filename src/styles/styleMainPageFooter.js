@@ -7,8 +7,4 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 20,
   },
-  // footerIcon: {
-  //   width: 100,
-  //   height: 100,
-  // }
 })

@@ -4,7 +4,7 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/styleLogin';
 
-export default function Login() { 
+export default function Login({ navigation }) { 
   const linkTo = useLinkTo();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +12,7 @@ export default function Login() {
   function validateLogin() {
     // validação extremamente simples apenas para o comportamento do app
     // email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
-    linkTo('/MainPage')
+    navigation.push('/MainPage');
   }
   return (
     <View style={ styles.loginContainer }>
