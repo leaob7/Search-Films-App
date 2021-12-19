@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  headerLinks: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 10,
+  },
   moviePageContainer: {
     backgroundColor: "#331177",
   },
@@ -18,13 +23,13 @@ export const styles = StyleSheet.create({
   },
   ratingText: {
     fontSize: 20,
-    color: "purple",
+    color: "#6325df",
     fontWeight: "bold",
     marginRight: 5,
     textAlign: "center",
   },
   infoView: {
-    marginTop: "35%",
+    marginTop: "25%",
     margin: 30,
   },
   movieTitle: {
@@ -34,10 +39,11 @@ export const styles = StyleSheet.create({
     marginBottom: 7,
   },
   posterInfoText: {
-    color: "#fff",
+    color: "#fdfdfd",
     fontSize: 15,
     marginTop: 7,
     marginRight: 5,
+    fontWeight: '400'
   },
   genreView: {
     flexDirection: "row",

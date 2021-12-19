@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/styleMoviePage';
 import { requestFilmDetails } from '../utils/requests';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { Link } from '@react-navigation/native';
 
 export default function MoviePage({ route }) {
   const { id } = route.params;
   const [movieDetails, setMovieDetails] = useState();
-  console.log(movieDetails);
 
   useEffect(() => {
     requestFilmDetails(id).then((details) => setMovieDetails(details));
@@ -23,6 +23,16 @@ export default function MoviePage({ route }) {
           style={ styles.poster }
           imageStyle={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
         >
+          <View style={ styles.headerLinks }>
+            <Link to={{screen: "MainPage"}} style={ { marginRight: 200 } }>
+              <Icon name="arrowleft" size={40} color="#fff" />
+            </Link>
+            <Link to={{screen: "MainPage"}}>
+              <Icon name="close" size={40} color="#fff" />
+            </Link>
+          </View>
+
+
           <View style={ styles.infoView }>
 
             <Text style={ styles.movieTitle }>{movieDetails.title}</Text>
@@ -57,7 +67,7 @@ export default function MoviePage({ route }) {
 
                 <Text style={ styles.watchText }>Wacth for free</Text>
                 <Icon
-                  name="play-circle"
+                  name="playcircleo"
                   color="#d1b100" size={25} 
                   style={{ marginRight: 15, marginTop: 2 }}
                 />
@@ -65,8 +75,8 @@ export default function MoviePage({ route }) {
               </TouchableOpacity>
 
               <View style={ styles.posterIcon }>
-                <Icon name="star" color="#fff" size={20} style={{ marginRight: 10 }} />
-                <Icon name="share-alt" color="#fff" size={20} />
+                <Icon name="staro" color="#fff" size={20} style={{ marginRight: 10 }} />
+                <Icon name="sharealt" color="#fff" size={20} />
               </View>
 
             </View>
