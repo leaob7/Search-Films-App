@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLinkTo } from '@react-navigation/native';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles/styleLogin';
+import MyContext from '../Context/Provider';
 
-export default function Login() { 
+export default function Login({ navigation }) { 
   const linkTo = useLinkTo();
-  const [email, setEmail] = useState('');
+  const {setEmail} = useContext(MyContext);
   const [password, setPassword] = useState('');
+  // utilizando context em email para informções da tela de perfil
 
   function validateLogin() {
     // validação extremamente simples apenas para o comportamento do app
-    email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
+    // email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
+    linkTo('/MainPage');
   }
   return (
     <View style={ styles.loginContainer }>

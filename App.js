@@ -5,9 +5,12 @@ import MyContext from './src/Context/Provider';
 
 export default function App() {
   const [email, setEmail] = useState('');
+  const [favorites, setFavorites] = useState([]);
   const contextValues = {
     email,
-    setEmail
+    setEmail,
+    favorites,
+    setFavorites
   }
   return (
       <NavigationContainer>
