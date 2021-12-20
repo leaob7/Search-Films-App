@@ -14,6 +14,6 @@ export const stylesFav = StyleSheet.create({
     fontSize: 20,
   },
   favList: {
-    marginTop: '30%',
+    marginTop: 40,
   }
 })
