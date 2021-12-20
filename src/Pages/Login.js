@@ -7,14 +7,13 @@ import MyContext from '../Context/Provider';
 
 export default function Login({ navigation }) { 
   const linkTo = useLinkTo();
-  const {setEmail} = useContext(MyContext);
+  const {email, setEmail} = useContext(MyContext);
   const [password, setPassword] = useState('');
-  // utilizando context em email para informções da tela de perfil
+  // utilizando context em email para simulação de DB
 
   function validateLogin() {
     // validação extremamente simples apenas para o comportamento do app
-    // email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
-    linkTo('/MainPage');
+    email.includes('@' && '.com') && password.length >= 4 ? linkTo('/MainPage') : null;
   }
   return (
     <View style={ styles.loginContainer }>
