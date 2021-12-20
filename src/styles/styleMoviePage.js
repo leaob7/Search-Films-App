@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   moviePageContainer: {
-    backgroundColor: "#331177",
+    backgroundColor: "#2d0f69",
   },
   posterContainer: {
     borderRadius: 20,

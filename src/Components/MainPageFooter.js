@@ -8,7 +8,7 @@ import { Link } from "@react-navigation/native";
 export default function MainPageFooter() {
 
   return (
-    <View style={{ backgroundColor: "#331177" }}>
+    <View style={{ backgroundColor: "#2d0f69" }}>
       <View style={ styles.footerContainer } >
         <Link to={{ screen: 'MainPage' }}>
           <Icon name="home-outline" size={22} color="#d1b100" />

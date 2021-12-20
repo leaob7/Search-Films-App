@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TextInput, View, ScrollView, Image } from 'react-native';
 import { requestRecentFilms, requestFrequentFilms, requestSoonFilms } from '../utils/requests';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
 import Loading from '../Components/Loading';
@@ -56,8 +56,8 @@ export default function MainPage({ navigation }) {
    <ScrollView style={ styles.mainPageContainer }>
       <View style={ styles.upBar }>
         <Icon
-          name="arrow-left"
-          size={25}
+          name="arrow-back-sharp"
+          size={30}
           style={ styles.backArrow }
           color="#fff"
           onPress={ () => navigation.navigate('Login') }
@@ -66,6 +66,7 @@ export default function MainPage({ navigation }) {
       </View>
 
       <View style={ styles.filterContainer } >
+        <Icon name="search" size={23} color="#ababab" style={ styles.icon }/>
         <TextInput
           style ={ styles.filterInput }
           placeholder={ filterText }

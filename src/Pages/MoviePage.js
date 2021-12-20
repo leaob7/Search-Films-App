@@ -37,7 +37,7 @@ export default function MoviePage({ route }) {
     <ScrollView style={ styles.moviePageContainer }>
         <View style={ styles.posterContainer }>
           <ImageBackground
-            source={{uri: `https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}}
+            source={{uri: `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`}}
             resizeMode="stretch"
             style={ styles.poster }
             imageStyle={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}

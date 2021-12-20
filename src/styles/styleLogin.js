@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   loginContainer: {
-    backgroundColor: "#331177",
+    backgroundColor: "#2d0f69",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
