@@ -7,13 +7,14 @@ const styles = StyleSheet.create({
     },
     upBar: {
       flexDirection: "row",
-      justifyContent:"center",
+      justifyContent:"flex-start",
       alignItems: "center",
       margin: "auto",
       marginTop: 70,
     },
     backArrow: {
-      marginRight: 20,
+      marginRight: 50,
+      marginLeft: 50,
     },
     upBarText: {
       color: "#d1b100",
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#331177",
       borderColor: "#fff",
       borderWidth: 1,
-      borderRadius: 25,
+      borderRadius: 15,
       fontSize: 20,
       color: "#fff",
       width: "90%",
@@ -38,22 +39,21 @@ const styles = StyleSheet.create({
     },
     recentFilms: {
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "space-between",
       margin: 30,
     },
     frequentFilms: {
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "space-between",
       margin: 30,
     },
     soonFilms: {
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "space-between",
       margin: 30,
     },
     linkTexts: {
       color: "#d1b100",
-      fontWeight: "bold",
       fontSize: 20,
     }
 })

@@ -16,7 +16,7 @@ export default function MainPage({ navigation }) {
   const [soonMovies, setSoonMovies ] = useState([]);
   const [textFilter, setTextFilter] = useState('');
 
-  // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
+  // splice para separar a metade dos filmes retornados, deixando todos para uma sessão/página única.
 
   const recentMoviesAPI = () => {
     requestRecentFilms().then((movies) => {
@@ -132,8 +132,8 @@ export default function MainPage({ navigation }) {
       }
 
     </ScrollView>
-
     <MainPageFooter />
+
       </>
   )
 }

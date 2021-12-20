@@ -2,9 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   footerContainer: {
-    backgroundColor: "#270d5b",
+    backgroundColor: "#19083b",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     padding: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    height: 80,
   },
 })

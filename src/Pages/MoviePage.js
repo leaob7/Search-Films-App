@@ -123,7 +123,7 @@ export default function MoviePage({ route }) {
         <View style={ styles.movieInfo }>
           <Text style={ { fontSize: 20, marginBottom: 10, color: '#d1b100', fontWeight: "bold"} }>Trailer</Text>
           <Text>
-            {movieDetails.video ? movieDetails.video : null}
+            {movieDetails.video}
           </Text>
         </View>
 
