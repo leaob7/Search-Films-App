@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, TextInput, View, ScrollView, Image } from 'react-native';
 import { requestRecentFilms, requestFrequentFilms, requestSoonFilms } from '../utils/requests';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
 import Loading from '../Components/Loading';
 import MainPageFooter from '../Components/MainPageFooter';
-import { Link } from '@react-navigation/native';
 
 const filterText = "What do you want to watch?"
 
@@ -15,8 +14,9 @@ export default function MainPage({ navigation }) {
   const [frequentMovies, setFrequentMovies ] = useState([]);
   const [soonMovies, setSoonMovies ] = useState([]);
   const [textFilter, setTextFilter] = useState('');
+  const scrollRef = useRef();
 
-  // splice para separar a metade dos filmes retornados, deixando todos para uma sessão única.
+  // splice para separar a metade dos filmes retornados, deixando todos para uma sessão/página única.
 
   const recentMoviesAPI = () => {
     requestRecentFilms().then((movies) => {
@@ -53,11 +53,11 @@ export default function MainPage({ navigation }) {
 
   return (
     <>
-   <ScrollView style={ styles.mainPageContainer }>
+   <ScrollView style={ styles.mainPageContainer } ref={scrollRef}>
       <View style={ styles.upBar }>
         <Icon
-          name="arrow-left"
-          size={25}
+          name="arrow-back-sharp"
+          size={30}
           style={ styles.backArrow }
           color="#fff"
           onPress={ () => navigation.navigate('Login') }
@@ -66,6 +66,7 @@ export default function MainPage({ navigation }) {
       </View>
 
       <View style={ styles.filterContainer } >
+        <Icon name="search" size={23} color="#ababab" style={ styles.icon }/>
         <TextInput
           style ={ styles.filterInput }
           placeholder={ filterText }
@@ -132,8 +133,8 @@ export default function MainPage({ navigation }) {
       }
 
     </ScrollView>
+    <MainPageFooter mainPageRef={scrollRef}/>
 
-    <MainPageFooter />
       </>
   )
 }

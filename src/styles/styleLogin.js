@@ -1,9 +1,9 @@
-import React from 'react';
+
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   loginContainer: {
-    backgroundColor: "#331177",
+    backgroundColor: "#2d0f69",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -26,17 +26,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   loginForm: {
-    alignItems: "center",
-    marginBottom: 50,
-  },
-  loginInput: {
     backgroundColor: "#411697",
-    color: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    margin: 7,
+    flexDirection: "row",
+    alignItems: "center",
     width: 300,
     height: 60,
+    marginBottom: 20,
+    borderRadius: 10,
+  },
+  loginInput: {
+    flex: 1,
+    color: "#fff",
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    margin: 10,
+  },
+  icon: {
+    paddingLeft: 30,
   },
   formBtn: {
     justifyContent: "center",

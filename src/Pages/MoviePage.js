@@ -13,7 +13,9 @@ export default function MoviePage({ route }) {
   const [checked, setChecked] = useState(false);
   const { setFavorites } = useContext(MyContext);
   // utilizando contexto para salvar filmes favoritos
+
   useEffect(() => {
+    // utilizando id recebido de props route para buscar individualmente a informação de cada filme
     requestFilmDetails(id).then((details) => setMovieDetails(details));
   }, [])
 
@@ -22,13 +24,23 @@ export default function MoviePage({ route }) {
     setFavorites((prevState) => [...prevState, movieDetails]);
   }
 
+  // converte minutos em horas e minutos
+  function timeConvert(n) {
+    let num = n;
+    let hours = (num / 60);
+    let rhours = Math.floor(hours);
+    let minutes = (hours - rhours) * 60;
+    let rminutes = Math.round(minutes);
+    return `${rhours}h ${rminutes}m`;
+    }
+
   return (
     <>
     {movieDetails ? 
     <ScrollView style={ styles.moviePageContainer }>
         <View style={ styles.posterContainer }>
           <ImageBackground
-            source={{uri: `https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}}
+            source={{uri: `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`}}
             resizeMode="stretch"
             style={ styles.poster }
             imageStyle={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
@@ -59,14 +71,16 @@ export default function MoviePage({ route }) {
               <View style={ styles.genreView }>
                 {movieDetails.genres.map((genre, index) => (
                   <Text style={ styles.posterInfoText } key={ index }>
-                    {genre.name}, 
+                    {/* retira a virgula apenas do ultimo genero */}
+                    {index != movieDetails.genres.length - 1
+                        ? `${genre.name},` : genre.name}
                   </Text>
                 ))}
               </View>
 
               <View style={ styles.genreView }>
                 <Text style={ styles.posterInfoText }>
-                  {`${movieDetails.release_date.slice(0, 4)}, ${movieDetails.production_countries[0].iso_3166_1}, ${movieDetails.runtime}`}
+                  {`${movieDetails.release_date.slice(0, 4)}, ${movieDetails.production_countries[0].iso_3166_1}, ${timeConvert(movieDetails.runtime)}`}
 
                 </Text>
               </View>
@@ -113,7 +127,7 @@ export default function MoviePage({ route }) {
         <View style={ styles.movieInfo }>
           <Text style={ { fontSize: 20, marginBottom: 10, color: '#d1b100', fontWeight: "bold"} }>Trailer</Text>
           <Text>
-            {movieDetails.video ? movieDetails.video : null}
+            {movieDetails.video}
           </Text>
         </View>
 

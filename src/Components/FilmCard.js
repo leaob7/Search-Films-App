@@ -6,10 +6,10 @@ import { styles } from '../styles/styleFilmCards';
 export default function FilmCard({ movies }) {
   return (
     <View style={ styles.cardContainer }>
-    {/* Optei por utilizar HOFs apenas por questão de preferência */}
+    {/* Optei por utilizar HOFs apenas por questão de preferência visual, fazendo a listagem do array de movies recebido via props */}
       {movies.map((film, index) => (
-        <Link to={{ screen: 'MovieDetails', params: { id: film.id } }}>
-          <View style={ styles.filmCard } key={ index }>
+        <Link to={{ screen: 'MovieDetails', params: { id: film.id } }} key={ index }>
+          <View style={ styles.filmCard }>
             <Image 
               source={{uri: `https://image.tmdb.org/t/p/original/${film.poster_path}`}}
               style={ styles.poster }

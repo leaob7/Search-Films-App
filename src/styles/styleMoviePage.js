@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   moviePageContainer: {
-    backgroundColor: "#331177",
+    backgroundColor: "#2d0f69",
   },
   posterContainer: {
     borderRadius: 20,
@@ -16,14 +16,13 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     height: 400,
     width: "100%",
-    // marginBottom: 30,
   },
   ratingView: {
     flexDirection: 'row',
   },
   ratingText: {
     fontSize: 20,
-    color: "#6325df",
+    color: "#d1b100",
     fontWeight: "bold",
     marginRight: 5,
     textAlign: "center",
