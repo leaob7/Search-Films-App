@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, TextInput, View, ScrollView, Image } from 'react-native';
 import { requestRecentFilms, requestFrequentFilms, requestSoonFilms } from '../utils/requests';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -6,7 +6,6 @@ import FilmCard from '../Components/FilmCard';
 import styles from '../styles/stylesMainPage';
 import Loading from '../Components/Loading';
 import MainPageFooter from '../Components/MainPageFooter';
-import { Link } from '@react-navigation/native';
 
 const filterText = "What do you want to watch?"
 
@@ -15,6 +14,7 @@ export default function MainPage({ navigation }) {
   const [frequentMovies, setFrequentMovies ] = useState([]);
   const [soonMovies, setSoonMovies ] = useState([]);
   const [textFilter, setTextFilter] = useState('');
+  const scrollRef = useRef();
 
   // splice para separar a metade dos filmes retornados, deixando todos para uma sessão/página única.
 
@@ -53,7 +53,7 @@ export default function MainPage({ navigation }) {
 
   return (
     <>
-   <ScrollView style={ styles.mainPageContainer }>
+   <ScrollView style={ styles.mainPageContainer } ref={scrollRef}>
       <View style={ styles.upBar }>
         <Icon
           name="arrow-back-sharp"
@@ -133,7 +133,7 @@ export default function MainPage({ navigation }) {
       }
 
     </ScrollView>
-    <MainPageFooter />
+    <MainPageFooter mainPageRef={scrollRef}/>
 
       </>
   )
