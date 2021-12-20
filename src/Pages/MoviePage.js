@@ -13,7 +13,9 @@ export default function MoviePage({ route }) {
   const [checked, setChecked] = useState(false);
   const { setFavorites } = useContext(MyContext);
   // utilizando contexto para salvar filmes favoritos
+
   useEffect(() => {
+    // utilizando id recebido de props route para buscar individualmente a informação de cada filme
     requestFilmDetails(id).then((details) => setMovieDetails(details));
   }, [])
 
@@ -22,6 +24,7 @@ export default function MoviePage({ route }) {
     setFavorites((prevState) => [...prevState, movieDetails]);
   }
 
+  // converte minutos em horas e minutos
   function timeConvert(n) {
     let num = n;
     let hours = (num / 60);
@@ -68,6 +71,7 @@ export default function MoviePage({ route }) {
               <View style={ styles.genreView }>
                 {movieDetails.genres.map((genre, index) => (
                   <Text style={ styles.posterInfoText } key={ index }>
+                    {/* retira a virgula apenas do ultimo genero */}
                     {index != movieDetails.genres.length - 1
                         ? `${genre.name},` : genre.name}
                   </Text>
