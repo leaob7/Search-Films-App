@@ -22,6 +22,15 @@ export default function MoviePage({ route }) {
     setFavorites((prevState) => [...prevState, movieDetails]);
   }
 
+  function timeConvert(n) {
+    let num = n;
+    let hours = (num / 60);
+    let rhours = Math.floor(hours);
+    let minutes = (hours - rhours) * 60;
+    let rminutes = Math.round(minutes);
+    return `${rhours}h ${rminutes}m`;
+    }
+
   return (
     <>
     {movieDetails ? 
@@ -59,14 +68,15 @@ export default function MoviePage({ route }) {
               <View style={ styles.genreView }>
                 {movieDetails.genres.map((genre, index) => (
                   <Text style={ styles.posterInfoText } key={ index }>
-                    {genre.name}, 
+                    {index != movieDetails.genres.length - 1
+                        ? `${genre.name},` : genre.name}
                   </Text>
                 ))}
               </View>
 
               <View style={ styles.genreView }>
                 <Text style={ styles.posterInfoText }>
-                  {`${movieDetails.release_date.slice(0, 4)}, ${movieDetails.production_countries[0].iso_3166_1}, ${movieDetails.runtime}`}
+                  {`${movieDetails.release_date.slice(0, 4)}, ${movieDetails.production_countries[0].iso_3166_1}, ${timeConvert(movieDetails.runtime)}`}
 
                 </Text>
               </View>
